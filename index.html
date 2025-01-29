@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trending Technology News</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #000000;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            text-align: center;
+            padding: 30px;
+        }
+
+        header {
+            font-size: 3em;
+            font-weight: bold;
+            color: #fdbb2d;
+            margin: 20px 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 4px 5px rgba(0, 0, 0, 0.4);
+        }
+
+        .headline {
+            font-size: 2em;
+            color: #ffffff;
+            margin: 15px 0;
+            animation: fadeIn 1.5s ease;
+            font-style: italic;
+        }
+
+        .info-bar {
+            font-size: 1em;
+            margin: 15px 0;
+            color: #eeeeee;
+        }
+
+        .image-container {
+            margin: 30px 0;
+            animation: fadeIn 2s ease;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 900px;
+            border-radius: 20px;
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Topics Grid */
+        .topics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+            animation: fadeIn 2s ease;
+        }
+
+        .topic {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .topic:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .topic h3 {
+            color: #fdbb2d;
+            margin-bottom: 10px;
+            text-shadow: 1px 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .topic p {
+            color: #eeeeee;
+            line-height: 1.8;
+        }
+
+        .footer {
+            margin-top: 50px;
+            font-size: 1em;
+            color: #eeeeee;
+        }
+
+        .footer a {
+            color: #fdbb2d;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #ffffff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .headline {
+                font-size: 1.5em;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>WEEKLY DOSAGE NEWS</header>
+        <div class="headline">Explore the Tech Marvels of Tomorrow!</div>
+        <div class="info-bar">
+            <span id="date-day"></span> | Visitors: <span id="visitor-count">1</span>
+        </div>
+        <div class="image-container">
+            <img src="tech.jpg" alt="Trending Technologies">
+        </div>
+        <div class="topics">
+            <div class="topic">
+                <h3>AI-Powered Creativity</h3>
+                <p>Meet the AI that paints masterpieces and writes novels! From creating music to generating art, artificial intelligence is turning into the ultimate creator.</p>
+            </div>
+            <div class="topic">
+                <h3>Space Tourism Takes Off</h3>
+                <p>Buckle up! Private companies are making space travel a reality for the adventurous. Will your next vacation destination be among the stars?</p>
+            </div>
+            <div class="topic">
+                <h3>Holographic Displays</h3>
+                <p>Say goodbye to flat screens! Holograms are making waves in communication, gaming, and entertainment, delivering jaw-dropping 3D visuals.</p>
+            </div>
+            <div class="topic">
+                <h3>Brain-Computer Interfaces</h3>
+                <p>Thoughts becoming actions? Scientists are bridging the gap between brains and machines, opening doors to mind-controlled tech and medical breakthroughs.</p>
+            </div>
+            <div class="topic">
+                <h3>Flying Cars Are Here</h3>
+                <p>Once a sci-fi dream, flying cars are taking to the skies, promising to revolutionize urban transportation and reduce traffic congestion.</p>
+            </div>
+            <div class="topic">
+                <h3>Climate Tech Innovations</h3>
+                <p>From carbon capture to sustainable energy, tech giants are racing to combat climate change with groundbreaking solutions. The future looks greener!</p>
+            </div>
+        </div>
+        <div class="footer">
+            Connect with me on <a href="https://www.linkedin.com/in/harshavardhana-v-439047294/" target="_blank">LinkedIn</a>
+        </div>
+    </div>
+
+    <script>
+        // Display current date and day
+        const dateDayElement = document.getElementById('date-day');
+        const currentDate = new Date();
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        dateDayElement.textContent = currentDate.toLocaleDateString('en-US', options);
+
+        // Visitor counter (stored in local storage)
+        const visitorCountElement = document.getElementById('visitor-count');
+        let visitorCount = localStorage.getItem('visitorCount') || 0;
+        visitorCount++;
+        localStorage.setItem('visitorCount', visitorCount);
+        visitorCountElement.textContent = visitorCount;
+    </script>
+</body>
+</html>
